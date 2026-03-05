@@ -2,6 +2,9 @@
 
 This folder is the updateable technical source of truth for the project.
 
+## Revision History
+- 2026-03-04: Added revision-history section for process guard compatibility.
+
 ## Documents
 - `EXECUTIVE_OVERVIEW.md`: decision-ready history, rationale, and current go/no-go status.
 - `ARCHITECTURE.md`: model architecture, invariants, and interfaces.

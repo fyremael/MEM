@@ -25,3 +25,6 @@ jobs:
 
       - name: Test
         run: python -m pytest -q tests
+
+      - name: Process Guard
+        run: python scripts/process_guard.py
