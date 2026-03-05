@@ -1,6 +1,7 @@
 # Executive Overview
 
 ## Revision History
+- 2026-03-05: Added GPU execution validation and throughput findings.
 - 2026-03-05: Expanded reliability matrix to 10 seeds (60 trials) and updated go/no-go evidence.
 - 2026-03-04: Initial executive brief added with multi-seed reliability analysis and gate decision framing.
 
@@ -15,6 +16,16 @@
 - Why:
   - Corridor stability is consistently strong, including failed retrieval-threshold cases.
   - Retrieval pass-rate is materially below production requirements across the frontier matrix.
+  - GPU execution is validated, but performance depends on workload utilization profile.
+
+## Compute Validation Snapshot
+- Source:
+  - `demo_runs/gpu_validation_v1/report/backend_comparison.json`
+  - `demo_runs/gpu_validation_v1_heavy_b64/report/backend_comparison.json`
+- Findings:
+  - GPU backend is confirmed (`cuda:0`) in benchmark runs.
+  - Low-utilization profile (`batch=10`) is CPU-favored (`GPU/CPU throughput: 0.53x`).
+  - Higher-utilization profile (`batch=64`) is GPU-favored (`GPU/CPU throughput: 2.58x`).
 
 ## Key Metrics
 Source artifacts:

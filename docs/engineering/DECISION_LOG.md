@@ -1,6 +1,7 @@
 # Decision Log
 
 ## Revision History
+- 2026-03-05: Added GPU validation evidence; confirmed compute path is not the current production blocker.
 - 2026-03-05: Added 10-seed (60-trial) reliability evidence; maintained NO-GO for production.
 - 2026-03-04: Updated decision gate with 3-seed reliability matrix evidence and explicit production acceptance thresholds.
 - 2026-03-04: Initial decision log created with current project gate status.
@@ -35,6 +36,13 @@ Reliability extension:
 - Trials: 60
 - Overall pass rate: 23.3%
 - Case pass-rate range: 0.0% to 50.0%
+
+Compute extension:
+- Study: `demo_runs/gpu_validation_v1/report/backend_comparison.json`
+- GPU backend validated (`cuda:0`) for project benchmark runs.
+- Throughput depends on utilization:
+  - low-utilization profile: CPU faster
+  - high-utilization profile: GPU ~2.58x faster
 
 ## Pending Gate Items
 1. Increase eval sample counts for tighter confidence intervals.

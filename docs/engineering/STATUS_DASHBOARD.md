@@ -1,6 +1,7 @@
 # Status Dashboard
 
 ## Revision History
+- 2026-03-05: Added GPU validation snapshot with CPU-vs-GPU benchmark evidence.
 - 2026-03-05: Expanded reliability matrix to 10 seeds and refreshed KPI snapshot and priorities.
 - 2026-03-04: Added multi-seed reliability matrix status (`corridor_reliability_v1`) and updated gate posture.
 - 2026-03-04: Initial dashboard populated from `corridor_stress_v5`.
@@ -41,6 +42,15 @@
   - `seed_1321`: `0.0%`
   - `seed_1423`: `50.0%`
 
+## Compute Validation
+- Source:
+  - `demo_runs/gpu_validation_v1/report/backend_comparison.json`
+  - `demo_runs/gpu_validation_v1_heavy_b64/report/backend_comparison.json`
+- Backend proof: GPU confirmed as `cuda:0` in WSL benchmark runs.
+- Throughput evidence:
+  - Low-utilization profile (`batch=10`): GPU/CPU = `0.53x` (CPU faster)
+  - High-utilization profile (`batch=64`): GPU/CPU = `2.58x` (GPU faster)
+
 ## KPI Table
 | Metric | Current |
 |---|---:|
@@ -51,6 +61,7 @@
 | Max tested pair inventory | 96 |
 | Current success rate in v5 frontier | 33.3% |
 | Current multi-seed reliability pass rate | 23.3% |
+| GPU status | validated (`cuda:0`) |
 | Dominant failure type | Retrieval threshold miss |
 | Corridor stability in failures | Still passing |
 
@@ -65,4 +76,4 @@
 ## Immediate Next Steps
 1. Execute retrieval-robustness interventions and rerun this exact 10-seed matrix.
 2. Increase eval batch counts to tighten confidence bounds for threshold decisions.
-3. Treat `writes=3` frontier variants as unstable for release planning until pass-rate improves materially.
+3. Shift reliability runs toward GPU-favored utilization settings where feasible.
