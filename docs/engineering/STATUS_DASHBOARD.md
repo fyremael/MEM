@@ -1,6 +1,7 @@
 # Status Dashboard
 
 ## Revision History
+- 2026-03-05: Expanded reliability matrix to 10 seeds and refreshed KPI snapshot and priorities.
 - 2026-03-04: Added multi-seed reliability matrix status (`corridor_reliability_v1`) and updated gate posture.
 - 2026-03-04: Initial dashboard populated from `corridor_stress_v5`.
 
@@ -24,14 +25,21 @@
 - Source:
   - `demo_runs/corridor_reliability_v1/report/reliability_summary.json`
   - `demo_runs/corridor_reliability_v1/report/reliability_case_summary.csv`
-- Seeds: `3`
+- Seeds: `10`
 - Cases per seed: `6`
-- Trials: `18`
-- Overall pass rate: `38.9%` (`7/18`)
+- Trials: `60`
+- Overall pass rate: `23.3%` (`14/60`)
 - Seed success rates:
   - `seed_0509`: `33.3%`
   - `seed_0607`: `33.3%`
   - `seed_0709`: `50.0%`
+  - `seed_0811`: `0.0%`
+  - `seed_0913`: `50.0%`
+  - `seed_1015`: `16.7%`
+  - `seed_1117`: `0.0%`
+  - `seed_1219`: `0.0%`
+  - `seed_1321`: `0.0%`
+  - `seed_1423`: `50.0%`
 
 ## KPI Table
 | Metric | Current |
@@ -42,7 +50,7 @@
 | Max tested distractors | 32 |
 | Max tested pair inventory | 96 |
 | Current success rate in v5 frontier | 33.3% |
-| Current multi-seed reliability pass rate | 38.9% |
+| Current multi-seed reliability pass rate | 23.3% |
 | Dominant failure type | Retrieval threshold miss |
 | Corridor stability in failures | Still passing |
 
@@ -55,6 +63,6 @@
 - `demo_runs/corridor_reliability_v1/report/success_rate_by_seed.svg`
 
 ## Immediate Next Steps
-1. Increase reliability matrix from 3 to at least 10 seeds at current frontier.
-2. Raise eval batch counts on boundary cases to reduce threshold noise.
-3. Prioritize retrieval robustness work on `writes=2/3` at `distance=64`.
+1. Execute retrieval-robustness interventions and rerun this exact 10-seed matrix.
+2. Increase eval batch counts to tighten confidence bounds for threshold decisions.
+3. Treat `writes=3` frontier variants as unstable for release planning until pass-rate improves materially.
