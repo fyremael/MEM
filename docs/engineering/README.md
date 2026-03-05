@@ -3,12 +3,14 @@
 This folder is the updateable technical source of truth for the project.
 
 ## Revision History
+- 2026-03-05: Added level-up campaign report and comparison artifacts references.
 - 2026-03-05: Added GPU validation document to engineering doc index.
 - 2026-03-04: Added revision-history section for process guard compatibility.
 
 ## Documents
 - `EXECUTIVE_OVERVIEW.md`: decision-ready history, rationale, and current go/no-go status.
 - `GPU_VALIDATION.md`: backend proof and CPU-vs-GPU benchmark evidence.
+- `LEVEL_UP_CAMPAIGN.md`: GPU-first profile uplift results and baseline comparison.
 - `ARCHITECTURE.md`: model architecture, invariants, and interfaces.
 - `PROCESS_FLOW.md`: train/probe/report/sweep/stress process flow and data flow.
 - `EXPERIMENT_PLAYBOOK.md`: reproducible command runbooks and interpretation guidance.

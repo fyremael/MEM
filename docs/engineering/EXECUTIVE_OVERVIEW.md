@@ -1,6 +1,7 @@
 # Executive Overview
 
 ## Revision History
+- 2026-03-05: Added level-up campaign signal (`18/18`) with preliminary-status caveat.
 - 2026-03-05: Added GPU execution validation and throughput findings.
 - 2026-03-05: Expanded reliability matrix to 10 seeds (60 trials) and updated go/no-go evidence.
 - 2026-03-04: Initial executive brief added with multi-seed reliability analysis and gate decision framing.
@@ -15,8 +16,18 @@
 - Decision: **GO for next validation phase**, **NO-GO for production release**.
 - Why:
   - Corridor stability is consistently strong, including failed retrieval-threshold cases.
-  - Retrieval pass-rate is materially below production requirements across the frontier matrix.
+  - Baseline retrieval pass-rate is materially below production requirements across the frontier matrix.
   - GPU execution is validated, but performance depends on workload utilization profile.
+
+## Level-Up Signal (Preliminary)
+- Source:
+  - `demo_runs/corridor_reliability_levelup_v1/report/reliability_summary.json`
+  - `demo_runs/corridor_reliability_levelup_v1/report/compare_vs_v1/comparison.json`
+- Result:
+  - new GPU-first profile achieved `18/18` passes across 3 seeds on the same six-case frontier.
+  - baseline-vs-candidate overall pass-rate delta: `+76.7pp` (`23.3% -> 100%`).
+- Caveat:
+  - this is a profile change and smaller seed count (`3`), so it is a strong signal, not final production proof.
 
 ## Compute Validation Snapshot
 - Source:
@@ -59,10 +70,10 @@ Source artifacts:
    - keep layers preserve memory-channel stability under high difficulty.
    - failures do not show corridor collapse signatures.
 2. Product readiness is not yet validated:
-   - pass-rate variance is high across seeds and includes multiple zero-success seeds.
-   - no frontier case currently meets production reliability requirements.
+   - baseline profile has high seed variance and low pass rates.
+   - level-up profile looks strong but needs >=10-seed confirmation before promotion.
 3. Executive implication:
-   - prioritize retrieval robustness optimization before any release gating.
+   - prioritize confirmation of the level-up profile at larger seed count.
    - do not commit to production launch gate yet.
 
 ## Architecture Diagram

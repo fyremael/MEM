@@ -1,6 +1,7 @@
 # Experiment Playbook
 
 ## Revision History
+- 2026-03-05: Added GPU-first level-up reliability campaign command.
 - 2026-03-04: Initial playbook added with reproducible commands and interpretation guidance.
 
 ## Baseline Commands
@@ -39,6 +40,23 @@ python -m modulus_memory_channels stress \
   --min-eval-accuracy 0.999 \
   --stop-after-failures 2 \
   --operator sensitivity --state-view memory --perturb
+```
+
+### Level-Up Reliability Campaign (GPU-First)
+```bash
+wsl -d Ubuntu -- bash -lc "cd /mnt/f/_codex/MEM && python3 scripts/reliability_matrix.py run-and-aggregate \
+  --reliability-root demo_runs/corridor_reliability_levelup_v1 \
+  --report-dir demo_runs/corridor_reliability_levelup_v1/report \
+  --no-baseline \
+  --seeds 1601 1703 1805 \
+  --platform gpu \
+  --steps 128 \
+  --learning-rate 0.0025 \
+  --d-model 96 \
+  --mlp-dim 256 \
+  --memory-dim 32 \
+  --batch-size 32 \
+  --eval-batches 12"
 ```
 
 ## Interpretation Rules

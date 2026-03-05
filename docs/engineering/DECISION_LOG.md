@@ -1,6 +1,7 @@
 # Decision Log
 
 ## Revision History
+- 2026-03-05: Added preliminary level-up campaign evidence (`18/18` on 3 seeds) and confirmation gate requirements.
 - 2026-03-05: Added GPU validation evidence; confirmed compute path is not the current production blocker.
 - 2026-03-05: Added 10-seed (60-trial) reliability evidence; maintained NO-GO for production.
 - 2026-03-04: Updated decision gate with 3-seed reliability matrix evidence and explicit production acceptance thresholds.
@@ -44,9 +45,16 @@ Compute extension:
   - low-utilization profile: CPU faster
   - high-utilization profile: GPU ~2.58x faster
 
+Level-up extension (preliminary):
+- Study: `demo_runs/corridor_reliability_levelup_v1/report/reliability_summary.json`
+- Seeds: 3
+- Trials: 18
+- Overall pass rate: 100.0%
+- Interpretation: strong profile uplift signal; requires >=10-seed confirmation before gate promotion.
+
 ## Pending Gate Items
-1. Increase eval sample counts for tighter confidence intervals.
-2. Improve retrieval robustness and rerun the same 10-seed matrix.
+1. Expand level-up profile validation to >=10 seeds on the same frontier.
+2. Maintain side-by-side baseline control for comparison integrity.
 3. Hit production acceptance thresholds:
    - overall pass rate >= 80%
    - no frontier case pass rate < 67%

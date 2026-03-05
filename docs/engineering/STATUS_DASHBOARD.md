@@ -1,6 +1,7 @@
 # Status Dashboard
 
 ## Revision History
+- 2026-03-05: Added level-up GPU campaign snapshot (`18/18` on 3 seeds) and baseline comparison.
 - 2026-03-05: Added GPU validation snapshot with CPU-vs-GPU benchmark evidence.
 - 2026-03-05: Expanded reliability matrix to 10 seeds and refreshed KPI snapshot and priorities.
 - 2026-03-04: Added multi-seed reliability matrix status (`corridor_reliability_v1`) and updated gate posture.
@@ -42,6 +43,16 @@
   - `seed_1321`: `0.0%`
   - `seed_1423`: `50.0%`
 
+## Level-Up Campaign (Preliminary)
+- Source:
+  - `demo_runs/corridor_reliability_levelup_v1/report/reliability_summary.json`
+  - `demo_runs/corridor_reliability_levelup_v1/report/compare_vs_v1/comparison.json`
+- Seeds: `3`
+- Trials: `18`
+- Overall pass rate: `100.0%` (`18/18`)
+- Baseline delta vs v1 10-seed matrix:
+  - `+76.7pp` overall (`23.3% -> 100.0%`)
+
 ## Compute Validation
 - Source:
   - `demo_runs/gpu_validation_v1/report/backend_comparison.json`
@@ -61,6 +72,7 @@
 | Max tested pair inventory | 96 |
 | Current success rate in v5 frontier | 33.3% |
 | Current multi-seed reliability pass rate | 23.3% |
+| Level-up profile pass rate (preliminary) | 100.0% (3-seed) |
 | GPU status | validated (`cuda:0`) |
 | Dominant failure type | Retrieval threshold miss |
 | Corridor stability in failures | Still passing |
@@ -74,6 +86,6 @@
 - `demo_runs/corridor_reliability_v1/report/success_rate_by_seed.svg`
 
 ## Immediate Next Steps
-1. Execute retrieval-robustness interventions and rerun this exact 10-seed matrix.
-2. Increase eval batch counts to tighten confidence bounds for threshold decisions.
-3. Shift reliability runs toward GPU-favored utilization settings where feasible.
+1. Expand level-up profile from 3 to >=10 seeds on the same six-case frontier.
+2. Keep baseline profile as control and maintain side-by-side comparison artifacts.
+3. Promote only if >=80% overall and no case <67% in the expanded run.
