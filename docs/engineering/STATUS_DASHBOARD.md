@@ -1,0 +1,60 @@
+# Status Dashboard
+
+## Revision History
+- 2026-03-04: Added multi-seed reliability matrix status (`corridor_reliability_v1`) and updated gate posture.
+- 2026-03-04: Initial dashboard populated from `corridor_stress_v5`.
+
+## Current Program Status
+- Architecture: Dual-stream memory corridor with explicit write/keep scheduling.
+- Tooling: Train/probe/report/sweep/stress with resume support.
+- Technical status: Corridor stable at high scale; retrieval reliability is current limiter.
+
+## Latest Frontier (v5)
+- Source:
+  - `demo_runs/corridor_stress_v5/sweep_summary.json`
+  - `demo_runs/corridor_stress_v5/sweep_summary.csv`
+- Cases: `6`
+- Corridor achieved: `2`
+- Hardest success:
+  - `stress_layers16_writes1_dist64_mem6_noise32_pairs96`
+- Easiest failure:
+  - `stress_layers16_writes1_dist56_mem6_noise32_pairs96`
+
+## Reliability Matrix (v1)
+- Source:
+  - `demo_runs/corridor_reliability_v1/report/reliability_summary.json`
+  - `demo_runs/corridor_reliability_v1/report/reliability_case_summary.csv`
+- Seeds: `3`
+- Cases per seed: `6`
+- Trials: `18`
+- Overall pass rate: `38.9%` (`7/18`)
+- Seed success rates:
+  - `seed_0509`: `33.3%`
+  - `seed_0607`: `33.3%`
+  - `seed_0709`: `50.0%`
+
+## KPI Table
+| Metric | Current |
+|---|---:|
+| Max tested layers | 16 |
+| Max tested memories | 6 |
+| Max tested distance | 64 (eval to 72) |
+| Max tested distractors | 32 |
+| Max tested pair inventory | 96 |
+| Current success rate in v5 frontier | 33.3% |
+| Current multi-seed reliability pass rate | 38.9% |
+| Dominant failure type | Retrieval threshold miss |
+| Corridor stability in failures | Still passing |
+
+## Key Visuals
+- `demo_runs/corridor_stress_v5/corridor_scores.svg`
+- `demo_runs/corridor_stress_v5/min_eval_accuracy.svg`
+- `demo_runs/corridor_stress_v5/report/compare_train/eval_accuracy_compare.svg`
+- `demo_runs/corridor_reliability_v1/report/pass_rate_by_case.svg`
+- `demo_runs/corridor_reliability_v1/report/mean_min_eval_accuracy_by_case.svg`
+- `demo_runs/corridor_reliability_v1/report/success_rate_by_seed.svg`
+
+## Immediate Next Steps
+1. Increase reliability matrix from 3 to at least 10 seeds at current frontier.
+2. Raise eval batch counts on boundary cases to reduce threshold noise.
+3. Prioritize retrieval robustness work on `writes=2/3` at `distance=64`.
