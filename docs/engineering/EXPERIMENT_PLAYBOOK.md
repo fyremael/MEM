@@ -1,6 +1,7 @@
 # Experiment Playbook
 
 ## Revision History
+- 2026-03-05: Added adversarial and phase-gate report command templates.
 - 2026-03-05: Added GPU-first level-up reliability campaign command.
 - 2026-03-04: Initial playbook added with reproducible commands and interpretation guidance.
 
@@ -57,6 +58,36 @@ wsl -d Ubuntu -- bash -lc "cd /mnt/f/_codex/MEM && python3 scripts/reliability_m
   --memory-dim 32 \
   --batch-size 32 \
   --eval-batches 12"
+```
+
+### Adversarial Gate Campaign (GPU-First)
+```bash
+wsl -d Ubuntu -- bash -lc "cd /mnt/f/_codex/MEM && python3 scripts/reliability_matrix.py run-and-aggregate \
+  --reliability-root demo_runs/corridor_reliability_levelup_v1_adversarial \
+  --report-dir demo_runs/corridor_reliability_levelup_v1_adversarial/report \
+  --no-baseline \
+  --seeds 2601 2703 2805 2907 3009 \
+  --platform gpu \
+  --steps 128 \
+  --learning-rate 0.0025 \
+  --d-model 96 \
+  --mlp-dim 256 \
+  --memory-dim 32 \
+  --batch-size 32 \
+  --distance-grid 64 72 \
+  --num-memories-grid 8 \
+  --num-distractors-grid 48 \
+  --eval-distances 64 72 80 \
+  --perturb-distractors 8"
+```
+
+### Phase Gate Report
+```bash
+python scripts/phase_gate_report.py \
+  --frontier-summary demo_runs/corridor_reliability_levelup_v1/report/reliability_summary.json \
+  --adversarial-summary demo_runs/corridor_reliability_levelup_v1_adversarial/report/reliability_summary.json \
+  --repro-summary demo_runs/corridor_repro_check_v1/report/reliability_summary.json \
+  --output-dir demo_runs/phase_gate_v1/report
 ```
 
 ## Interpretation Rules

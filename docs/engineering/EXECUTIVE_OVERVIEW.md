@@ -1,6 +1,7 @@
 # Executive Overview
 
 ## Revision History
+- 2026-03-05: Added phase-gate closure (frontier/adversarial/repro all PASS) and upgraded recommendation to RC execution for locked profile.
 - 2026-03-05: Upgraded level-up signal from 3-seed preliminary to 10-seed confirmed (`60/60`).
 - 2026-03-05: Added level-up campaign signal (`18/18`) with preliminary-status caveat.
 - 2026-03-05: Added GPU execution validation and throughput findings.
@@ -14,7 +15,7 @@
 4. Decision process shifted from single-run point outcomes to multi-seed pass-rate evidence.
 
 ## Current Status (As of 2026-03-05)
-- Decision: **GO (conditional RC planning for level-up profile)**, **NO-GO (legacy baseline profile)**.
+- Decision: **GO (RC execution for locked level-up profile)**, **NO-GO (legacy baseline profile)**.
 - Why:
   - Corridor stability is consistently strong, including failed retrieval-threshold cases.
   - Baseline retrieval pass-rate is materially below production requirements across the frontier matrix.
@@ -29,6 +30,14 @@
   - baseline-vs-candidate overall pass-rate delta: `+76.7pp` (`23.3% -> 100%`).
 - Scope caveat:
   - this validates the level-up profile, not the legacy baseline recipe.
+
+## Phase-Gate Closure
+- Source: `demo_runs/phase_gate_v1/report/phase_gate_report.json`
+- Gate outcomes:
+  - Frontier gate: PASS (`60/60`, min case pass rate `1.0`, seeds `10`)
+  - Adversarial gate: PASS (`30/30`, min case pass rate `1.0`, seeds `5`)
+  - Repro gate: PASS (overall and case deltas `0.0`)
+- Result: phase-gate decision = **GO**
 
 ## Compute Validation Snapshot
 - Source:
@@ -74,7 +83,7 @@ Source artifacts:
    - baseline profile has high seed variance and low pass rates.
    - level-up profile is validated on the current frontier, but needs expansion beyond this matrix.
 3. Executive implication:
-   - proceed with release-candidate planning for the locked level-up profile.
+   - proceed with release-candidate execution for the locked level-up profile.
    - keep baseline profile off the release path.
 
 ## Architecture Diagram

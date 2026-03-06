@@ -1,6 +1,7 @@
 # Decision Log
 
 ## Revision History
+- 2026-03-05: Closed phase gates (frontier/adversarial/repro) with GO for RC execution on locked level-up profile.
 - 2026-03-05: Confirmed level-up campaign at 10 seeds (`60/60`) and moved to conditional RC-planning GO for that profile.
 - 2026-03-05: Added preliminary level-up campaign evidence (`18/18` on 3 seeds) and confirmation gate requirements.
 - 2026-03-05: Added GPU validation evidence; confirmed compute path is not the current production blocker.
@@ -16,11 +17,11 @@
   - retrieval threshold not robust at required operating frontier
 
 ## Current Decision (2026-03-05)
-- Decision: **GO (conditional RC planning for level-up profile)**, **NO-GO (legacy baseline profile)**.
+- Decision: **GO (RC execution for locked level-up profile)**, **NO-GO (legacy baseline profile)**.
 - Rationale:
   - corridor stability is consistently strong in stress frontiers.
   - baseline reliability remains far below production threshold.
-  - level-up profile now exceeds reliability threshold on the current frontier.
+  - level-up profile now exceeds thresholds across frontier, adversarial, and repro gates.
 
 ## Evidence Snapshot
 - Study: `demo_runs/corridor_stress_v5`
@@ -54,13 +55,17 @@ Level-up extension (preliminary):
 - Overall pass rate: 100.0%
 - Interpretation: profile passes the reliability gate on this frontier.
 
+Phase-gate closure:
+- Study: `demo_runs/phase_gate_v1/report/phase_gate_report.json`
+- Frontier gate: PASS
+- Adversarial gate: PASS
+- Repro gate: PASS
+- Decision output: GO
+
 ## Pending Gate Items
-1. Expand level-up profile validation beyond current frontier difficulty.
+1. Freeze release-candidate profile/config and publish immutable artifact manifest.
 2. Maintain side-by-side baseline control for comparison integrity.
-3. Hit production acceptance thresholds in expanded scope:
-   - overall pass rate >= 80%
-   - no frontier case pass rate < 67%
-   - no keep-layer instability signal
+3. Expand validation frontier post-RC without changing locked RC profile.
 
 ## Next Formal Review Trigger
 - Trigger when:

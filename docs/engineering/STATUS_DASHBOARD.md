@@ -1,6 +1,7 @@
 # Status Dashboard
 
 ## Revision History
+- 2026-03-05: Added formal phase-gate outcomes (frontier/adversarial/repro) and RC execution recommendation.
 - 2026-03-05: Upgraded level-up campaign from preliminary to 10-seed confirmed (`60/60`).
 - 2026-03-05: Added level-up GPU campaign snapshot (`18/18` on 3 seeds) and baseline comparison.
 - 2026-03-05: Added GPU validation snapshot with CPU-vs-GPU benchmark evidence.
@@ -54,6 +55,14 @@
 - Baseline delta vs v1 10-seed matrix:
   - `+76.7pp` overall (`23.3% -> 100.0%`)
 
+## Phase-Gate Outcomes (v1)
+- Source:
+  - `demo_runs/phase_gate_v1/report/phase_gate_report.json`
+- Frontier gate: `PASS`
+- Adversarial gate: `PASS`
+- Repro gate: `PASS`
+- Overall phase-gate decision: `GO` (RC execution for locked level-up profile)
+
 ## Compute Validation
 - Source:
   - `demo_runs/gpu_validation_v1/report/backend_comparison.json`
@@ -74,6 +83,7 @@
 | Current success rate in v5 frontier | 33.3% |
 | Current multi-seed reliability pass rate | 23.3% |
 | Level-up profile pass rate (confirmed) | 100.0% (10-seed) |
+| Adversarial profile pass rate (confirmed) | 100.0% (5-seed) |
 | GPU status | validated (`cuda:0`) |
 | Dominant failure type | Retrieval threshold miss |
 | Corridor stability in failures | Still passing |
@@ -87,6 +97,6 @@
 - `demo_runs/corridor_reliability_v1/report/success_rate_by_seed.svg`
 
 ## Immediate Next Steps
-1. Expand validation beyond the current six-case frontier using the locked level-up profile.
-2. Keep baseline profile as control and maintain side-by-side comparison artifacts.
-3. Start conditional release-candidate planning for the level-up profile only.
+1. Freeze RC config and artifact schema for the locked level-up profile.
+2. Generate RC bundle and publish traceable evidence links.
+3. Keep baseline profile as control and monitor regression deltas continuously.

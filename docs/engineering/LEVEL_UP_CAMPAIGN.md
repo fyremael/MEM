@@ -1,6 +1,7 @@
 # Level-Up Campaign
 
 ## Revision History
+- 2026-03-05: Added adversarial and reproducibility follow-on validation snapshots.
 - 2026-03-05: Expanded campaign to 10 seeds and confirmed gate-level reliability on the level-up profile.
 - 2026-03-05: Initial GPU-first level-up campaign report with baseline comparison.
 
@@ -60,3 +61,15 @@ Visuals:
 1. Expand beyond current six-case frontier while holding this profile.
 2. Keep baseline-vs-level-up comparison active for regression detection.
 3. Start release-candidate planning only for this locked profile/config.
+
+## Follow-On Gates (Executed)
+Adversarial campaign:
+- Source: `demo_runs/corridor_reliability_levelup_v1_adversarial/report/reliability_summary.json`
+- Matrix: `distance {64,72}`, `memories 8`, `distractors 48`, `writes {1,2,3}`
+- Seeds: `5`
+- Result: `30/30` passes (`100%`)
+
+Repro campaign:
+- Source: `demo_runs/corridor_repro_check_v1/report/reliability_summary.json`
+- Clean output root rerun with same locked profile and seeds `{1601,1703,1805}`
+- Result: `18/18` passes and zero case-rate deltas vs reference
