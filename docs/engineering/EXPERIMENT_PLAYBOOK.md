@@ -48,7 +48,7 @@ wsl -d Ubuntu -- bash -lc "cd /mnt/f/_codex/MEM && python3 scripts/reliability_m
   --reliability-root demo_runs/corridor_reliability_levelup_v1 \
   --report-dir demo_runs/corridor_reliability_levelup_v1/report \
   --no-baseline \
-  --seeds 1601 1703 1805 \
+  --seeds 1601 1703 1805 1907 2009 2111 2213 2315 2417 2519 \
   --platform gpu \
   --steps 128 \
   --learning-rate 0.0025 \

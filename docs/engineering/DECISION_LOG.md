@@ -1,6 +1,7 @@
 # Decision Log
 
 ## Revision History
+- 2026-03-05: Confirmed level-up campaign at 10 seeds (`60/60`) and moved to conditional RC-planning GO for that profile.
 - 2026-03-05: Added preliminary level-up campaign evidence (`18/18` on 3 seeds) and confirmation gate requirements.
 - 2026-03-05: Added GPU validation evidence; confirmed compute path is not the current production blocker.
 - 2026-03-05: Added 10-seed (60-trial) reliability evidence; maintained NO-GO for production.
@@ -15,10 +16,11 @@
   - retrieval threshold not robust at required operating frontier
 
 ## Current Decision (2026-03-05)
-- Decision: **GO (next validation phase)**, **NO-GO (production)**.
+- Decision: **GO (conditional RC planning for level-up profile)**, **NO-GO (legacy baseline profile)**.
 - Rationale:
   - corridor stability is consistently strong in stress frontiers.
-  - retrieval reliability remains far below production threshold at frontier difficulty.
+  - baseline reliability remains far below production threshold.
+  - level-up profile now exceeds reliability threshold on the current frontier.
 
 ## Evidence Snapshot
 - Study: `demo_runs/corridor_stress_v5`
@@ -47,15 +49,15 @@ Compute extension:
 
 Level-up extension (preliminary):
 - Study: `demo_runs/corridor_reliability_levelup_v1/report/reliability_summary.json`
-- Seeds: 3
-- Trials: 18
+- Seeds: 10
+- Trials: 60
 - Overall pass rate: 100.0%
-- Interpretation: strong profile uplift signal; requires >=10-seed confirmation before gate promotion.
+- Interpretation: profile passes the reliability gate on this frontier.
 
 ## Pending Gate Items
-1. Expand level-up profile validation to >=10 seeds on the same frontier.
+1. Expand level-up profile validation beyond current frontier difficulty.
 2. Maintain side-by-side baseline control for comparison integrity.
-3. Hit production acceptance thresholds:
+3. Hit production acceptance thresholds in expanded scope:
    - overall pass rate >= 80%
    - no frontier case pass rate < 67%
    - no keep-layer instability signal
