@@ -14,11 +14,15 @@ REQUIRED_FILES = [
     ".github/ISSUE_TEMPLATE/bug_report.md",
     ".github/ISSUE_TEMPLATE/experiment_request.md",
     ".github/workflows/ci.yml",
+    ".github/workflows/reference-docs.yml",
+    "scripts/build_api_reference.py",
     "docs/process/README.md",
     "docs/process/DEVELOPMENT_WORKFLOW.md",
     "docs/process/CHANGE_CONTROL.md",
     "docs/process/MEETING_CADENCE.md",
     "docs/process/REPOSITORY_HARDENING.md",
+    "docs/reference/README.md",
+    "docs/reference/API_INDEX.md",
     "docs/engineering/STATUS_DASHBOARD.md",
     "docs/engineering/DECISION_LOG.md",
     "docs/engineering/EXECUTIVE_OVERVIEW.md",
@@ -31,6 +35,7 @@ REVISION_HISTORY_FILES = [
     "docs/process/CHANGE_CONTROL.md",
     "docs/process/MEETING_CADENCE.md",
     "docs/process/REPOSITORY_HARDENING.md",
+    "docs/reference/README.md",
     "docs/engineering/README.md",
     "docs/engineering/ARCHITECTURE.md",
     "docs/engineering/PROCESS_FLOW.md",
@@ -67,6 +72,8 @@ def _check_ci_gate(repo_root: Path, errors: list[str]) -> None:
         errors.append("ci.yml missing required test gate command: python -m pytest -q tests")
     if "python scripts/process_guard.py" not in content:
         errors.append("ci.yml missing process guard command: python scripts/process_guard.py")
+    if "python scripts/build_api_reference.py --check" not in content:
+        errors.append("ci.yml missing API reference check command: python scripts/build_api_reference.py --check")
 
 
 def _check_gitignore(repo_root: Path, errors: list[str]) -> None:

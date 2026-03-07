@@ -28,3 +28,6 @@ jobs:
 
       - name: Process Guard
         run: python scripts/process_guard.py
+
+      - name: API Reference Check
+        run: python scripts/build_api_reference.py --check

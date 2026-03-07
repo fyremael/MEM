@@ -4,6 +4,7 @@
 This repository uses evidence-driven development for model, diagnostics, and decision artifacts.
 
 ## Revision History
+- 2026-03-06: Added API/reference docs generation and check requirements.
 - 2026-03-04: Added process guard command and pre-PR policy check.
 - 2026-03-04: Initial contribution process and Git workflow baseline.
 
@@ -36,7 +37,11 @@ python -m pytest -q tests
 ```bash
 python scripts/process_guard.py
 ```
-4. Update docs when metrics or decision posture changes:
+4. Run API/reference docs check before opening PR:
+```bash
+python scripts/build_api_reference.py --check
+```
+5. Update docs when metrics or decision posture changes:
    - `docs/engineering/STATUS_DASHBOARD.md`
    - `docs/engineering/DECISION_LOG.md`
    - `docs/engineering/EXECUTIVE_OVERVIEW.md`

@@ -1,0 +1,42 @@
+name: Reference Docs
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "src/**"
+      - "scripts/build_api_reference.py"
+      - "docs/reference/**"
+      - ".github/workflows/reference-docs.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "src/**"
+      - "scripts/build_api_reference.py"
+      - "docs/reference/**"
+      - ".github/workflows/reference-docs.yml"
+
+jobs:
+  build-reference:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate API Reference
+        run: python scripts/build_api_reference.py
+
+      - name: Verify API Reference Is Clean
+        run: python scripts/build_api_reference.py --check
+
+      - name: Upload Reference Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: reference-docs
+          path: docs/reference

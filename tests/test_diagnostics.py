@@ -1,5 +1,7 @@
 from pathlib import Path
 import shutil
+import subprocess
+import sys
 import uuid
 
 import jax
@@ -532,3 +534,15 @@ def test_cli_train_and_probe_outputs():
         assert stress_resume_exit == 0
     finally:
         shutil.rmtree(artifact_dir, ignore_errors=True)
+
+
+def test_api_reference_docs_are_current():
+    repo_root = Path(__file__).resolve().parents[1]
+    completed = subprocess.run(
+        [sys.executable, "scripts/build_api_reference.py", "--check"],
+        cwd=repo_root,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert completed.returncode == 0, completed.stdout + completed.stderr

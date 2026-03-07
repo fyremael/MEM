@@ -1,6 +1,7 @@
 # Repository Hardening
 
 ## Revision History
+- 2026-03-06: Added reference-docs workflow and recommended required status checks.
 - 2026-03-04: Initial branch protection and repository governance checklist.
 
 ## GitHub Settings Checklist
@@ -11,7 +12,8 @@
    - require status checks to pass before merge
    - require conversation resolution before merge
 3. Set required checks:
-   - `test`
+   - `test` (from `.github/workflows/ci.yml`)
+   - `build-reference` (from `.github/workflows/reference-docs.yml`)
 4. Restrict direct pushes to `main` (admins optional).
 5. Enable dependency and secret scanning alerts if available.
 
