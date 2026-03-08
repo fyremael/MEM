@@ -1,12 +1,14 @@
 # Docs Changelog
 
 ## Revision History
+- 2026-03-08: Triggered docs-site redeploy after GitHub Pages configuration update.
 - 2026-03-08: Added GitHub Pages deployment workflow for MkDocs site publishing.
 - 2026-03-08: Added MkDocs documentation hub, nav, and unified docs build/check pipeline (`build_docs.py` + `generate_context_docs.py`).
 
 ## Entries
 
 ### 2026-03-08
+- Triggered docs-site redeploy after repository Pages settings change.
 - Added automated Pages deployment workflow at `.github/workflows/docs-site.yml`.
 - Added `mkdocs.yml` with BNRPE-style documentation navigation.
 - Added `docs/index.md` as the docs hub page.
