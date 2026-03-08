@@ -5,7 +5,13 @@ on:
   pull_request:
     paths:
       - "src/**"
+      - "mkdocs.yml"
+      - "scripts/build_docs.py"
+      - "scripts/generate_context_docs.py"
       - "scripts/build_api_reference.py"
+      - "docs/index.md"
+      - "docs/changelog.md"
+      - "docs/context_snapshot.md"
       - "docs/reference/**"
       - ".github/workflows/reference-docs.yml"
   push:
@@ -13,7 +19,13 @@ on:
       - main
     paths:
       - "src/**"
+      - "mkdocs.yml"
+      - "scripts/build_docs.py"
+      - "scripts/generate_context_docs.py"
       - "scripts/build_api_reference.py"
+      - "docs/index.md"
+      - "docs/changelog.md"
+      - "docs/context_snapshot.md"
       - "docs/reference/**"
       - ".github/workflows/reference-docs.yml"
 
@@ -29,14 +41,21 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Generate API Reference
-        run: python scripts/build_api_reference.py
+      - name: Install Docs Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[docs]"
 
-      - name: Verify API Reference Is Clean
-        run: python scripts/build_api_reference.py --check
+      - name: Generate Docs Artifacts
+        run: python scripts/build_docs.py --no-site-build
+
+      - name: Verify Docs Artifacts Are Clean
+        run: python scripts/build_docs.py --check --no-site-build
 
       - name: Upload Reference Artifact
         uses: actions/upload-artifact@v4
         with:
           name: reference-docs
-          path: docs/reference
+          path: |
+            docs/reference
+            docs/context_snapshot.md

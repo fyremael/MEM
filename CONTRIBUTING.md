@@ -4,6 +4,7 @@
 This repository uses evidence-driven development for model, diagnostics, and decision artifacts.
 
 ## Revision History
+- 2026-03-08: Switched docs validation command to unified docs pipeline (`build_docs.py --check`) and added docs dependency profile.
 - 2026-03-06: Added API/reference docs generation and check requirements.
 - 2026-03-04: Added process guard command and pre-PR policy check.
 - 2026-03-04: Initial contribution process and Git workflow baseline.
@@ -27,7 +28,7 @@ This repository uses evidence-driven development for model, diagnostics, and dec
 ## Development Loop
 1. Install dev dependencies:
 ```bash
-python -m pip install -e .[dev]
+python -m pip install -e ".[dev,docs]"
 ```
 2. Run tests before opening PR:
 ```bash
@@ -37,9 +38,9 @@ python -m pytest -q tests
 ```bash
 python scripts/process_guard.py
 ```
-4. Run API/reference docs check before opening PR:
+4. Run docs pipeline check before opening PR:
 ```bash
-python scripts/build_api_reference.py --check
+python scripts/build_docs.py --check
 ```
 5. Update docs when metrics or decision posture changes:
    - `docs/engineering/STATUS_DASHBOARD.md`

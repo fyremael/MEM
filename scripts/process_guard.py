@@ -15,7 +15,15 @@ REQUIRED_FILES = [
     ".github/ISSUE_TEMPLATE/experiment_request.md",
     ".github/workflows/ci.yml",
     ".github/workflows/reference-docs.yml",
+    ".github/workflows/docs-site.yml",
+    "mkdocs.yml",
+    "requirements-docs.txt",
+    "scripts/build_docs.py",
     "scripts/build_api_reference.py",
+    "scripts/generate_context_docs.py",
+    "docs/index.md",
+    "docs/changelog.md",
+    "docs/context_snapshot.md",
     "docs/process/README.md",
     "docs/process/DEVELOPMENT_WORKFLOW.md",
     "docs/process/CHANGE_CONTROL.md",
@@ -43,6 +51,7 @@ REVISION_HISTORY_FILES = [
     "docs/engineering/DECISION_LOG.md",
     "docs/engineering/STATUS_DASHBOARD.md",
     "docs/engineering/EXECUTIVE_OVERVIEW.md",
+    "docs/changelog.md",
 ]
 
 
@@ -72,8 +81,8 @@ def _check_ci_gate(repo_root: Path, errors: list[str]) -> None:
         errors.append("ci.yml missing required test gate command: python -m pytest -q tests")
     if "python scripts/process_guard.py" not in content:
         errors.append("ci.yml missing process guard command: python scripts/process_guard.py")
-    if "python scripts/build_api_reference.py --check" not in content:
-        errors.append("ci.yml missing API reference check command: python scripts/build_api_reference.py --check")
+    if "python scripts/build_docs.py --check" not in content:
+        errors.append("ci.yml missing docs pipeline check command: python scripts/build_docs.py --check")
 
 
 def _check_gitignore(repo_root: Path, errors: list[str]) -> None:

@@ -1,0 +1,50 @@
+site_name: MEM Documentation
+site_description: MEM research implementation docs, API reference, and operating guidance.
+repo_url: https://github.com/fyremael/MEM
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: mkdocs
+
+nav:
+  - Home: index.md
+  - API Reference:
+    - Overview: reference/README.md
+    - API Index: reference/API_INDEX.md
+    - modulus_memory_channels: reference/api/modulus_memory_channels.md
+    - __main__: reference/api/__main__.md
+    - artifacts: reference/api/artifacts.md
+    - bench_write_keep_read: reference/api/bench_write_keep_read.md
+    - cli: reference/api/cli.md
+    - config: reference/api/config.md
+    - dk_predictor: reference/api/dk_predictor.md
+    - gap: reference/api/gap.md
+    - io: reference/api/io.md
+    - jacobian_norm: reference/api/jacobian_norm.md
+    - model: reference/api/model.md
+    - probe_runner: reference/api/probe_runner.md
+    - reporting: reference/api/reporting.md
+    - subspace: reference/api/subspace.md
+    - training: reference/api/training.md
+    - visualization: reference/api/visualization.md
+  - Context Snapshot: context_snapshot.md
+  - Engineering:
+    - Overview: engineering/README.md
+    - Executive Overview: engineering/EXECUTIVE_OVERVIEW.md
+    - Architecture: engineering/ARCHITECTURE.md
+    - Process Flow: engineering/PROCESS_FLOW.md
+    - Experiment Playbook: engineering/EXPERIMENT_PLAYBOOK.md
+    - GPU Validation: engineering/GPU_VALIDATION.md
+    - Level-Up Campaign: engineering/LEVEL_UP_CAMPAIGN.md
+    - Phase-Gate RC Readiness: engineering/PHASE_GATE_RC_READINESS.md
+    - Status Dashboard: engineering/STATUS_DASHBOARD.md
+    - Decision Log: engineering/DECISION_LOG.md
+    - Revision Template: engineering/REVISION_TEMPLATE.md
+  - Process:
+    - Overview: process/README.md
+    - Development Workflow: process/DEVELOPMENT_WORKFLOW.md
+    - Change Control: process/CHANGE_CONTROL.md
+    - Meeting Cadence: process/MEETING_CADENCE.md
+    - Repository Hardening: process/REPOSITORY_HARDENING.md
+  - Docs Changelog: changelog.md

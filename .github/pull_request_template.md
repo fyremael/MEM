@@ -10,7 +10,7 @@
 ## Verification
 - [ ] `python -m pytest -q tests`
 - [ ] Updated relevant artifacts/docs
-- [ ] `python scripts/build_api_reference.py --check`
+- [ ] `python scripts/build_docs.py --check`
 - Evidence paths:
 
 ## Decision Impact

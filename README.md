@@ -22,10 +22,10 @@ The point is simple: run real experiments, inspect failure modes, and keep a pap
 
 ## Quick start
 ```bash
-python -m pip install -e .[dev]
+python -m pip install -e ".[dev,docs]"
 python -m pytest -q tests
 python scripts/process_guard.py
-python scripts/build_api_reference.py --check
+python scripts/build_docs.py --check
 ```
 
 ## Useful entrypoints
@@ -34,11 +34,13 @@ python scripts/build_api_reference.py --check
 - Reliability comparison: `python scripts/reliability_compare.py --help`
 - Phase-gate report: `python scripts/phase_gate_report.py --help`
 - API docs generator: `python scripts/build_api_reference.py --help`
+- Docs pipeline: `python scripts/build_docs.py --help`
 
 ## Docs map
 - Engineering: `docs/engineering/`
 - Process/governance: `docs/process/`
 - API/reference: `docs/reference/`
+- Published site: `https://fyremael.github.io/MEM/`
 
 Good starting docs:
 - `docs/engineering/EXECUTIVE_OVERVIEW.md`
